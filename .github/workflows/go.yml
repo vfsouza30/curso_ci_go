@@ -21,6 +21,19 @@ jobs:
       with:
         go-version: '1.23'
 
+    - name: Install Docker Compose
+      run: sudo apt-get update && sudo apt-get install -y docker-compose
+
+    - name: Build-DB
+      run: docker-compose build
+
+    - name: Create-DB
+      run: docker-compose up -d
+
+    - name: Test
+      run: go test -v main_test.go
+
+
     - name: Build-DB
       run: docker-compose build
 
