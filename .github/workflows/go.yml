@@ -33,15 +33,8 @@ jobs:
     - name: Create-DB
       run: docker-compose up -d
 
-    - name: Test
-      run: go test -v main_test.go
-
-
-    - name: Build-DB
-      run: docker-compose build
-
-    - name: Create-DB
-      run: docker-compose up -d
+    - name: Wait for DB to be ready
+      run: sleep 15
 
     - name: Test
       run: go test -v main_test.go
